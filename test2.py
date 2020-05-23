@@ -83,5 +83,5 @@ while(True):
             print("알림 안뜸 - 제출 성공?")
             break
     
-    if flag:
-        #시스템 종료
+    #if flag:
+        
