@@ -26,11 +26,12 @@ def wait():
 
 options = webdriver.ChromeOptions()
 options.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36")
-options.add_argument('headless')
-options.add_argument("disable-gpu")
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
 #options.add_argument("--proxy-server=socks5://127.0.0.1:9150")
 
-driver = webdriver.Chrome(executable_path="./chromedriver", chrome_options=options)
+driver = webdriver.Chrome(executable_path="/usr/local/bin/chromedriver", chrome_options=options)
 
 while(True):
     print("시작")
