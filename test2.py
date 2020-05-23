@@ -30,7 +30,7 @@ options.add_argument('headless')
 options.add_argument("disable-gpu")
 #options.add_argument("--proxy-server=socks5://127.0.0.1:9150")
 
-driver = webdriver.Chrome(chrome_options=options)
+driver = webdriver.Chrome(executable_path="./chromedriver", chrome_options=options)
 
 while(True):
     print("시작")
