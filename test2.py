@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.proxy import Proxy, ProxyType
-import pytesseract
-from PIL import Image, ImageEnhance, ImageFilter
+#import pytesseract
+#from PIL import Image, ImageEnhance, ImageFilter
 import time
 from selenium.webdriver.common.action_chains import ActionChains
 import cv2
@@ -82,6 +82,3 @@ while(True):
         except:
             print("알림 안뜸 - 제출 성공?")
             break
-    
-    #if flag:
-        
