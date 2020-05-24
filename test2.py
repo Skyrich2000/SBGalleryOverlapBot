@@ -28,8 +28,9 @@ def wait():
 def isr(t):
     return t in "qwertyuiopasdfghjklzxcvbnm0123456789"
 
+print("토르 킴")
 os.popen("/etc/init.d/tor restart")
-print("토르 켜고 4초 기다림")
+print("4초 기다림")
 time.sleep(4)
 
 options = webdriver.ChromeOptions()
