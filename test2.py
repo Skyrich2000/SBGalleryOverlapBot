@@ -29,7 +29,7 @@ def isr(t):
     return t in "qwertyuiopasdfghjklzxcvbnm0123456789"
 
 print("토르 킴")
-os.popen("/etc/init.d/tor restart")
+print(os.popen("/etc/init.d/tor restart").readline())
 print("4초 기다림")
 time.sleep(4)
 
