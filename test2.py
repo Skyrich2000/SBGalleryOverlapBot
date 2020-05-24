@@ -149,13 +149,13 @@ while(True):
             if "차단" in alert.text:
                 print("차단 당해서 IP 바꿔야함")
                 flag = 1
-            if "올바른" in alert.text:
+            elif "올바른" in alert.text:
                 print("기계 인거 들킴")
                 flag = 0
-            if "내용" in alert.text:
+            elif "내용" in alert.text:
                 print("본문 제대로 안씀")
                 flag = 2
-            if "코드" in alert.text or "code" in alert.text:
+            elif "코드" in alert.text or "code" in alert.text:
                 print("코드 틀림")
                 flag = 3
             alert.accept()
