@@ -139,31 +139,29 @@ while(True):
     driver.find_element_by_xpath("//button[@class='btn_blue btn_svc write']").click()
     print("제출 클릭")
         
-    while(True):
-        print("알람 뜰때까지 7초 기다림")
-        time.sleep(7)
-        try:
-            print("알람 확인")
-            alert = driver.switch_to.alert
-            print(alert.text)
-            if "차단" in alert.text:
-                print("차단 당해서 IP 바꿔야함")
-                flag = 1
-            elif "올바른" in alert.text:
-                print("기계 인거 들킴")
-                flag = 0
-            elif "내용" in alert.text:
-                print("본문 제대로 안씀")
-                flag = 2
-            elif "코드" in alert.text or "code" in alert.text:
-                print("코드 틀림")
-                flag = 3
-            alert.accept()
-            
-        except:
-            print("알림 안뜸 - 제출 성공 or 오류")
+    
+    print("알람 뜰때까지 7초 기다림")
+    time.sleep(7)
+    try:
+        print("알람 확인")
+        alert = driver.switch_to.alert
+        print(alert.text)
+        if "차단" in alert.text:
+            print("차단 당해서 IP 바꿔야함")
+            flag = 1
+        elif "올바른" in alert.text:
+            print("기계 인거 들킴")
             flag = 0
-            break
+        elif "내용" in alert.text:
+            print("본문 제대로 안씀")
+            flag = 2
+        elif "코드" in alert.text or "code" in alert.text:
+            print("코드 틀림")
+            flag = 3
+        alert.accept()
+    except:
+        print("알림 안뜸 - 제출 성공 or 오류")
+        flag = 0
     
     if flag == 1:
         print("시스템 종료")
