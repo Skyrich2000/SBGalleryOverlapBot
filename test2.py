@@ -9,8 +9,8 @@ import numpy as np
 import random
 
 token = "!.,'-_^*1234567890+="
-title = []
-content = []
+title = ["싱글벙글 글쓰기 힘드네"]
+content = ["좆같다"]
 flag = False
 
 def addtoken(st):
@@ -51,9 +51,9 @@ while(True):
     print("비번 입력")
     wait()
 
-    driver.find_element_by_xpath('//*[@id="write"]/div[1]/fieldset/div[3]/ul/li').click()
-    print("말머리 선택")
-    wait()
+    #driver.find_element_by_xpath('//*[@id="write"]/div[1]/fieldset/div[3]/ul/li').click()
+    #print("말머리 선택")
+    #wait()
 
     driver.find_element_by_xpath('//*[@id="subject"]').send_keys("싱글벙글 "+random.choice(title))
     print("제목 입력")
