@@ -7,6 +7,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import cv2
 import numpy as np
 import random
+import os
 
 token = "!.,'-_^*1234567890+="
 title = ["싱글벙글 노잼"]
@@ -26,6 +27,10 @@ def wait():
 
 def isr(t):
     return t in "qwertyuiopasdfghjklzxcvbnm0123456789"
+
+os.popen("/etc/init.d/tor restart")
+print("토르 켜고 4초 기다림")
+time.sleep(4)
 
 options = webdriver.ChromeOptions()
 options.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36")
@@ -155,7 +160,7 @@ while(True):
             flag = 1
         elif "내용" in alert.text:
             print("본문 제대로 안씀")
-            flag = 2
+            flag = 1
         elif "코드" in alert.text or "code" in alert.text:
             print("코드 틀림")
             flag = 3
