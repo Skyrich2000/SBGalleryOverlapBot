@@ -152,7 +152,7 @@ while(True):
             flag = 1
         elif "올바른" in alert.text:
             print("기계 인거 들킴")
-            flag = 0
+            flag = 1
         elif "내용" in alert.text:
             print("본문 제대로 안씀")
             flag = 2
