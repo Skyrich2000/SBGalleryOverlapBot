@@ -48,7 +48,12 @@ while(True):
         driver.get('http://icanhazip.com/')
         print("::::IP : ", driver.find_element_by_xpath('/html/body/pre').get_attribute('innerHTML'))
 
-        driver.get('https://gall.dcinside.com/mgallery/board/write/?id=singlebungle1472')
+        driver.get('https://gall.dcinside.com/mgallery/board/lists?id=singlebungle1472')
+        driver.implicitly_wait(20)  
+        print("메인 페이지")
+        wait()
+
+        driver.find_element_by_xpath('//*[@id="container"]/section[1]/article[2]/div[1]/div[3]/div/div[2]/a').click()
         driver.implicitly_wait(20)
         print("화면 뜸")
         wait()
