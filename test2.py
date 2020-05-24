@@ -22,7 +22,7 @@ def addtoken(st):
     return out
 
 def wait():
-    time.sleep(random.randint(2,6)/2)
+    time.sleep(random.randint(4,8)/2)
 
 def isr(t):
     return t in "qwertyuiopasdfghjklzxcvbnm0123456789"
@@ -32,7 +32,7 @@ options.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
-#options.add_argument("--proxy-server=socks5://127.0.0.1:9150")
+options.add_argument("--proxy-server=socks5://127.0.0.1:9050")
 
 driver = webdriver.Chrome(executable_path="/usr/local/bin/chromedriver", chrome_options=options)
 
@@ -68,6 +68,7 @@ while(True):
         #driver.find_element_by_xpath('//*[@id="write"]/div[1]/fieldset/div[3]/ul/li').click()
         #print("말머리 선택")
         #wait()
+
         try:
             driver.find_element_by_xpath('//*[@id="subject"]').send_keys("싱글벙글 "+random.choice(title))
             print("제목 입력")
