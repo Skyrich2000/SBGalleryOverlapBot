@@ -29,9 +29,9 @@ def isr(t):
     return t in "qwertyuiopasdfghjklzxcvbnm0123456789"
 
 print("토르 킴")
-print(os.popen("/etc/init.d/tor restart").readline())
-print("4초 기다림")
-time.sleep(4)
+print(os.popen("/etc/init.d/tor start").readline())
+print("30초 기다림")
+time.sleep(30)
 
 options = webdriver.ChromeOptions()
 options.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36")
@@ -85,9 +85,9 @@ while(True):
             continue
 
     if flag == 0 or flag == 2:
-        body = driver.switch_to_frame(driver.find_element_by_xpath('//*[@id="tx_canvas_wysiwyg"]'))
+        body = driver.switch_to.frame(driver.find_element_by_xpath('//*[@id="tx_canvas_wysiwyg"]'))
         driver.find_element_by_xpath('/html/body').send_keys(random.choice(content))
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         print("본문 입력")
         wait()
 
@@ -172,4 +172,4 @@ while(True):
     
     if flag == 1:
         print("시스템 종료")
-        pass
+        break
