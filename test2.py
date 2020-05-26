@@ -30,8 +30,8 @@ def isr(t):
     return t in "qwertyuiopasdfghjklzxcvbnm0123456789"
 
 print(os.popen("/etc/init.d/tor start").readline())
-print("토르 켜질때 까지 20초 기다림")
-time.sleep(20)
+print("토르 켜질때 까지 10초 기다림")
+time.sleep(10)
 
 options = webdriver.ChromeOptions()
 options.add_argument("\"accept\"=*/*")
@@ -60,7 +60,7 @@ try:
 except:
     pass
 
-time.sleep(10)
+time.sleep(15)
 print("메인 페이지")
 wait()
 """
@@ -72,13 +72,13 @@ wait()
 while(True):
     if flag == 0:
         driver.find_element_by_xpath('//*[@id="container"]/section/header/div/div[1]/h2/a').click()
-        time.sleep(10)
+        time.sleep(15)
         print("다시 메인 페이지")
         wait()
 
         driver.find_element_by_xpath('//*[@id="container"]/section[1]/article[2]/div[1]/div[3]/div/div[2]/a').click()
         print("화면 뜸 - 10초 대기")
-        time.sleep(10)
+        time.sleep(30)
 
         try:
             actions = ActionChains(driver)
