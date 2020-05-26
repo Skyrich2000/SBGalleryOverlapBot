@@ -52,15 +52,16 @@ driver.get('http://icanhazip.com/')
 print("::::IP : ", driver.find_element_by_xpath('/html/body/pre').get_attribute('innerHTML'))
 
 driver.get('https://gall.dcinside.com/mgallery/board/lists?id=singlebungle1472&page=1')
+time.sleep(15)
 wait()
 
 try:
     driver.find_element_by_xpath('/html/body/div[5]/div/div[3]/button').click()
     print("갤러리 경고 메세지 클릭")
+    time.sleep(5)
 except:
     pass
 
-time.sleep(15)
 print("메인 페이지")
 wait()
 """
