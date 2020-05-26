@@ -31,7 +31,7 @@ def isr(t):
 
 print(os.popen("/etc/init.d/tor start").readline())
 print("토르 켜질때 까지 20초 기다림")
-time.sleep(20)
+#time.sleep(20)
 
 options = webdriver.ChromeOptions()
 options.add_argument("\"accept\"=*/*")
@@ -39,19 +39,27 @@ options.add_argument("accept-encoding=\"sdch\"")
 options.add_argument("accept-language=ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4")
 options.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36")
 options.add_argument('window-size=800x600')
-options.add_argument('--headless')
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
+#options.add_argument('--headless')
+#options.add_argument('--no-sandbox')
+#options.add_argument('--disable-dev-shm-usage')
 #options.add_argument("--proxy-server=socks5://127.0.0.1:9150")
-options.add_argument("--proxy-server=socks5://127.0.0.1:9050")
+#options.add_argument("--proxy-server=socks5://127.0.0.1:9050")
 
-driver = webdriver.Chrome(executable_path="/usr/local/bin/chromedriver",chrome_options=options)
-#
+#driver = webdriver.Chrome(executable_path="/usr/local/bin/chromedriver",chrome_options=options)
+driver = webdriver.Chrome(chrome_options=options)
 print("시작")
 driver.get('http://icanhazip.com/')
 print("::::IP : ", driver.find_element_by_xpath('/html/body/pre').get_attribute('innerHTML'))
 
 driver.get('https://gall.dcinside.com/mgallery/board/lists?id=singlebungle1472')
+wait()
+
+try:
+    driver.find_element_by_xpath('/html/body/div[5]/div/div[3]/button').click()
+    print("갤러리 경고 메세지 클릭")
+except:
+    pass
+
 time.sleep(15)
 print("메인 페이지")
 wait()
@@ -164,7 +172,7 @@ while(True):
             flag = 0
             pass
 
-    driver.execute_script("window.scrollBy(100, 100)")
+    driver.execute_script("window.scrollBy(300, 300)")
     wait()
     ele = driver.find_element_by_xpath('//*[@id="write"]/div[4]/button[1]')
     actions = ActionChains(driver)
