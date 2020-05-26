@@ -39,20 +39,20 @@ options.add_argument("accept-encoding=\"sdch\"")
 options.add_argument("accept-language=ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4")
 options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36")
 options.add_argument('window-size=800x600')
-options.add_argument('--headless')
+#options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 #options.add_argument('--disable-dev-shm-usage')
 #options.add_argument("--proxy-server=socks5://127.0.0.1:9150")
-options.add_argument("--proxy-server=socks5://127.0.0.1:9050")
+#options.add_argument("--proxy-server=socks5://127.0.0.1:9050")
 
-#driver = webdriver.Chrome(chrome_options=options)
-driver = webdriver.Chrome(executable_path="/usr/local/bin/chromedriver",chrome_options=options)
+driver = webdriver.Chrome(chrome_options=options)
+#driver = webdriver.Chrome(executable_path="/usr/local/bin/chromedriver",options=options)
 print("시작")
 driver.get('http://icanhazip.com/')
 print("::::IP : ", driver.find_element_by_xpath('/html/body/pre').get_attribute('innerHTML'))
 
 driver.get('https://gall.dcinside.com/mgallery/board/lists?id=singlebungle1472&page=1')
-time.sleep(15)
+time.sleep(10)
 wait()
 
 try:
@@ -64,27 +64,20 @@ except:
 
 print("메인 페이지")
 wait()
-"""
-driver.find_element_by_xpath('//*[@id="container"]/section[1]/article[2]/div[2]/table/tbody/tr[3]/td[3]/a[1]').click()
-time.sleep(20)
-print("아무 페이지")
-wait()
-"""
+
 while(True):
     if flag == 0:
         driver.find_element_by_xpath('//*[@id="container"]/section/header/div/div[1]/h2/a').click()
-        time.sleep(15)
         print("다시 메인 페이지")
-        wait()
+        time.sleep(10)
 
         driver.find_element_by_xpath('//*[@id="container"]/section[1]/article[2]/div[1]/div[3]/div/div[2]/a').click()
         print("화면 뜸 - 10초 대기")
-        time.sleep(30)
+        time.sleep(10)
 
         try:
-            actions = ActionChains(driver)
-            actions.move_to_element(driver.find_element_by_xpath('//*[@id="name"]')).clear().send_keys("ㅇㅇ")
-            actions.perform()
+            driver.find_element_by_xpath('//*[@id="name"]').clear()
+            driver.find_element_by_xpath('//*[@id="name"]').send_keys("ㅇㅇ")
             print("닉네임 입력")
             wait()
         except:
@@ -93,10 +86,8 @@ while(True):
             continue
 
         try:
-            actions = ActionChains(driver)
-            actions.move_to_element(driver.find_element_by_xpath('//*[@id="password"]')).clear().send_keys("85749869")
-            actions.perform()
-
+            driver.find_element_by_xpath('//*[@id="password"]').clear()
+            driver.find_element_by_xpath('//*[@id="password"]').send_keys("85749869")
             print("비번 입력")
             wait()
         except:
@@ -170,9 +161,8 @@ while(True):
     if flag == 3:
         try:
             driver.execute_script("document.body.style.zoom='100%'")
-            actions = ActionChains(driver)
-            actions.move_to_element(driver.find_element_by_xpath('//*[@id="code"]')).clear().send_keys(text)
-            actions.perform()
+            driver.find_element_by_xpath('//*[@id="code"]').clear()
+            driver.find_element_by_xpath('//*[@id="code"]').send_keys(text)
             wait()
         except:
             flag = 0
