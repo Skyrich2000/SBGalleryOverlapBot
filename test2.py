@@ -39,19 +39,20 @@ options.add_argument("accept-encoding=\"sdch\"")
 options.add_argument("accept-language=ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4")
 options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36")
 options.add_argument('window-size=800x600')
-#options.add_argument('--headless')
+options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 #options.add_argument('--disable-dev-shm-usage')
 #options.add_argument("--proxy-server=socks5://127.0.0.1:9150")
-#options.add_argument("--proxy-server=socks5://127.0.0.1:9050")
+options.add_argument("--proxy-server=socks5://127.0.0.1:9050")
 
-driver = webdriver.Chrome(chrome_options=options)
-#driver = webdriver.Chrome(executable_path="/usr/local/bin/chromedriver",options=options)
+#driver = webdriver.Chrome(chrome_options=options)
+driver = webdriver.Chrome(executable_path="/usr/local/bin/chromedriver",options=options)
 print("시작")
 driver.get('http://icanhazip.com/')
 print("::::IP : ", driver.find_element_by_xpath('/html/body/pre').get_attribute('innerHTML'))
 
 driver.get('https://gall.dcinside.com/mgallery/board/lists?id=singlebungle1472&page=1')
+print("메인 페이지")
 time.sleep(10)
 wait()
 
@@ -62,7 +63,6 @@ try:
 except:
     pass
 
-print("메인 페이지")
 wait()
 
 while(True):
