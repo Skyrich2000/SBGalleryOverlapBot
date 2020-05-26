@@ -60,7 +60,7 @@ try:
 except:
     pass
 
-time.sleep(15)
+time.sleep(10)
 print("메인 페이지")
 wait()
 """
@@ -72,16 +72,18 @@ wait()
 while(True):
     if flag == 0:
         driver.find_element_by_xpath('//*[@id="container"]/section/header/div/div[1]/h2/a').click()
-        time.sleep(15)
+        time.sleep(10)
         print("다시 메인 페이지")
         wait()
 
         driver.find_element_by_xpath('//*[@id="container"]/section[1]/article[2]/div[1]/div[3]/div/div[2]/a').click()
-        print("화면 뜸 - 20초 대기")
-        time.sleep(20)
+        print("화면 뜸 - 10초 대기")
+        time.sleep(10)
 
         try:
-            driver.find_element_by_xpath('//*[@id="name"]').send_keys("ㅇㅇ")
+            actions = ActionChains(driver)
+            actions.move_to_element(driver.find_element_by_xpath('//*[@id="name"]')).clear().send_keys("ㅇㅇ")
+            actions.perform()
             print("닉네임 입력")
             wait()
         except:
@@ -90,7 +92,10 @@ while(True):
             continue
 
         try:
-            driver.find_element_by_xpath('//*[@id="password"]').send_keys("85749869")
+            actions = ActionChains(driver)
+            actions.move_to_element(driver.find_element_by_xpath('//*[@id="password"]')).clear().send_keys("85749869")
+            actions.perform()
+
             print("비번 입력")
             wait()
         except:
@@ -164,15 +169,15 @@ while(True):
     if flag == 3:
         try:
             driver.execute_script("document.body.style.zoom='100%'")
-            driver.find_element_by_xpath('//*[@id="code"]').clear()
-            wait()
-            driver.find_element_by_xpath('//*[@id="code"]').send_keys(text)
+            actions = ActionChains(driver)
+            actions.move_to_element(driver.find_element_by_xpath('//*[@id="code"]')).clear().send_keys(text)
+            actions.perform()
             wait()
         except:
             flag = 0
             pass
 
-    driver.execute_script("window.scrollBy(300, 300)")
+    driver.execute_script("window.scrollBy(100, 100)")
     wait()
     ele = driver.find_element_by_xpath('//*[@id="write"]/div[4]/button[1]')
     actions = ActionChains(driver)
@@ -181,10 +186,11 @@ while(True):
     wait()
     ele = driver.find_element_by_xpath('//*[@id="write"]/div[4]/button[2]')
     actions = ActionChains(driver)
-    actions.move_to_element(ele)
+    actions.move_to_element(ele).click()
     actions.perform()
-    ele.click()
     print("제출 클릭")
+    #ele.submit()
+    #ele.send_keys('\n')
 
     print("알람 뜰때까지 7초 기다림")
     time.sleep(7)
